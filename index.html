@@ -1,0 +1,273 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'DM Sans',sans-serif;background:#f4f8fc;color:#1a2b3c;overflow-x:hidden}
+  :root{
+    --ocean:#0c4a7a;--ocean-mid:#1d6fa6;--ocean-light:#e8f4fd;--ocean-pale:#f0f7ff;
+    --accent:#f5c842;--text:#1a2b3c;--muted:#5c7a96;--border:#d4e6f5;--white:#fff
+  }
+
+  /* NAV */
+  nav{background:var(--ocean);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;position:sticky;top:0;z-index:50}
+  .nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+  .nav-logo{width:44px;height:44px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .nav-logo img{width:60px;height:60px}
+  .nav-name{display:flex;flex-direction:column}
+  .nav-name span:first-child{color:#fff;font-size:13px;font-weight:500;letter-spacing:.03em;line-height:1.2}
+  .nav-name span:last-child{color:rgba(255,255,255,.55);font-size:11px;font-weight:300;line-height:1.2}
+  .nav-links{display:flex;gap:24px}
+  .nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:14px;font-weight:400;transition:color .2s}
+  .nav-links a:hover{color:#fff}
+
+  /* HERO */
+  .hero{background:var(--ocean);padding:80px 2rem 100px;text-align:center;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;bottom:-2px;left:0;right:0;height:80px;background:var(--ocean-pale);clip-path:ellipse(55% 100% at 50% 100%)}
+  .hero-eyebrow{display:inline-block;background:rgba(255,255,255,.12);color:rgba(255,255,255,.85);font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:6px 16px;border-radius:100px;margin-bottom:28px;border:1px solid rgba(255,255,255,.18)}
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,6vw,4rem);font-weight:700;color:#fff;line-height:1.1;margin-bottom:20px;max-width:720px;margin-left:auto;margin-right:auto}
+  .hero h1 em{color:var(--accent);font-style:normal}
+  .hero-sub{color:rgba(255,255,255,.70);font-size:16px;max-width:500px;margin:0 auto 40px;font-weight:300;line-height:1.7}
+  .hero-badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .badge{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.85);font-size:13px;font-weight:400;padding:8px 18px;border-radius:100px}
+
+  /* ABOUT */
+  .section{padding:72px 2rem;max-width:960px;margin:0 auto}
+  .section-tag{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ocean-mid);margin-bottom:10px}
+  .section h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;color:var(--ocean);line-height:1.2;margin-bottom:16px}
+  .section p{color:var(--muted);font-size:15px;line-height:1.8;max-width:640px}
+
+  /* STORY */
+  .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-top:48px}
+  .story-text p{color:var(--muted);font-size:15px;line-height:1.85;margin-bottom:16px}
+  .tech-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+  .tech-pill{background:var(--ocean-light);color:var(--ocean);font-size:12px;font-weight:500;padding:5px 14px;border-radius:6px;border:1px solid var(--border)}
+  .story-card{background:var(--ocean);border-radius:16px;padding:28px;color:#fff}
+  .story-card h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:12px;color:var(--accent)}
+  .story-card p{font-size:14px;line-height:1.75;color:rgba(255,255,255,.75);font-weight:300}
+  .story-stat{background:rgba(255,255,255,.08);border-radius:10px;padding:16px 20px;margin-top:16px;display:flex;align-items:center;gap:14px}
+  .story-stat .num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--accent);line-height:1}
+  .story-stat .lbl{font-size:13px;color:rgba(255,255,255,.65);line-height:1.4}
+
+  /* MISSIONS */
+  .missions-wrap{background:var(--ocean-pale);padding:72px 2rem}
+  .missions-inner{max-width:960px;margin:0 auto}
+  .missions-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:40px}
+  .mission-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:22px 18px;transition:transform .2s,box-shadow .2s;cursor:default;position:relative;overflow:hidden}
+  .mission-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--ocean-mid)}
+  .mission-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(12,74,122,.12)}
+  .mission-num{font-size:11px;font-weight:500;letter-spacing:.08em;color:var(--ocean-mid);text-transform:uppercase;margin-bottom:6px}
+  .mission-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--ocean);line-height:1.3;margin-bottom:8px}
+  .mission-desc{font-size:13px;color:var(--muted);line-height:1.6}
+
+  /* HOW */
+  .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+  .how-card{padding:24px;border:1px solid var(--border);border-radius:12px;background:var(--white)}
+  .how-icon{width:40px;height:40px;background:var(--ocean-light);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .how-icon svg{width:22px;height:22px;stroke:var(--ocean-mid);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .how-card h4{font-weight:500;font-size:15px;color:var(--ocean);margin-bottom:8px}
+  .how-card p{font-size:13px;color:var(--muted);line-height:1.7}
+
+  /* CTA */
+  .cta-section{background:var(--ocean);padding:80px 2rem;text-align:center}
+  .cta-section h2{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:14px}
+  .cta-section p{color:rgba(255,255,255,.65);font-size:15px;margin-bottom:32px}
+  .cta-btn{display:inline-block;background:var(--accent);color:var(--ocean);font-weight:500;font-size:15px;padding:14px 36px;border-radius:8px;text-decoration:none;cursor:pointer;border:none;transition:opacity .2s}
+  .cta-btn:hover{opacity:.88}
+
+  /* FOOTER */
+  footer{background:#0a3d66;padding:28px 2rem;text-align:center}
+  footer p{color:rgba(255,255,255,.4);font-size:13px}
+  footer span{color:rgba(255,255,255,.65)}
+  @media(max-width:700px){
+    .story-grid,.how-grid{grid-template-columns:1fr}
+    .missions-grid{grid-template-columns:repeat(2,1fr)}
+  }
+</style>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="nav-logo">
+      <img src="logo.png" alt="Colegio Naval Logo">
+    </div>
+    <div class="nav-name">
+      <span>Colegio Naval</span>
+      <span>Santafé de Bogotá</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#">El juego</a>
+    <a href="#">Misiones</a>
+    <a href="#">Cómo se hizo</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Proyecto de Grado 11° · 2026</div>
+  <h1>Wasteland <em>Waters</em></h1>
+  <p class="hero-sub">Un viaje interactivo por la crisis del plástico en los océanos, hecho en C con Raylib.</p>
+  <div class="hero-badges">
+    <span class="badge">Para todo público</span>
+    <span class="badge">8 misiones</span>
+    <span class="badge">Bilingüe ES · EN</span>
+    <span class="badge">Multiplataforma</span>
+  </div>
+</div>
+
+<!-- ABOUT / STORY -->
+<div style="background:var(--ocean-pale);padding:2px 0">
+<div class="section">
+  <p class="section-tag">La historia</p>
+  <h2>Un videojuego sobre lo que está pasando en el océano</h2>
+
+  <div class="story-grid">
+    <div class="story-text">
+      <p>El Gran Parche de Basura del Pacífico tiene más de 1.6 millones de km² y 80.000 toneladas de plástico. Pero los números solos no enseñan. Por eso nació <strong>Wasteland Waters</strong>: para que los estudiantes del Colegio Naval <em>vivan</em> el problema, no solo lo lean.</p>
+      <p>El juego fue desarrollado completamente en lenguaje C, usando la librería gráfica Raylib y un Makefile para compilar en Linux, macOS y Windows. Sin motores comerciales, sin frameworks: código desde cero, lo que hace el proyecto especialmente valioso como ejercicio de programación real.</p>
+      <div class="tech-pills">
+        <span class="tech-pill">C99</span>
+        <span class="tech-pill">Raylib 5.0</span>
+        <span class="tech-pill">Makefile</span>
+        <span class="tech-pill">Emscripten / WebAssembly</span>
+        <span class="tech-pill">MinGW (Windows)</span>
+      </div>
+    </div>
+    <div>
+      <div class="story-card">
+        <h3>El Gran Parche del Pacífico</h3>
+        <p>No es una isla sólida de plástico. Es una densa "sopa" de microplásticos suspendidos en el agua. La luz UV del sol fragmenta el plástico grande en millones de partículas invisibles al ojo humano.</p>
+        <div class="story-stat">
+          <div class="num">450</div>
+          <div class="lbl">años puede tardar<br>una botella PET en degradarse</div>
+        </div>
+        <div class="story-stat">
+          <div class="num">9%</div>
+          <div class="lbl">del plástico producido<br>en la historia ha sido reciclado</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- MISSIONS -->
+<div class="missions-wrap">
+  <div class="missions-inner">
+    <p class="section-tag">Las misiones</p>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.4rem);color:var(--ocean);margin-bottom:8px">Ocho formas de entender un mismo problema</h2>
+    <p style="color:var(--muted);font-size:15px;line-height:1.7;max-width:580px">Cada misión combina un minijuego con una ronda de trivia. Primero haces, luego reflexionas.</p>
+    <div class="missions-grid">
+      <div class="mission-card">
+        <p class="mission-num">Misión 1</p>
+        <p class="mission-title">Tipos de plástico</p>
+        <p class="mission-desc">Arrastra cada objeto al contenedor correcto según su resina. PET, HDPE, PVC, LDPE, PP, PS.</p>
+      </div>
+      <div class="mission-card">
+        <p class="mission-num">Misión 2</p>
+        <p class="mission-title">Cadena de polímeros</p>
+        <p class="mission-desc">Construye la cadena del polímero correcto arrastrando el monómero exacto a cada casillero.</p>
+      </div>
+      <div class="mission-card">
+        <p class="mission-num">Misión 3</p>
+        <p class="mission-title">Bloqueo de microplásticos</p>
+        <p class="mission-desc">Tower defense simplificado: coloca filtros en el río antes de que los microplásticos lleguen a la cadena alimentaria.</p>
+      </div>
+      <div class="mission-card">
+        <p class="mission-num">Misión 4</p>
+        <p class="mission-title">Países contaminantes</p>
+        <p class="mission-desc">Identifica regiones, ordena países por contaminación y traza la ruta del río más contaminante del mundo.</p>
+      </div>
+      <div class="mission-card">
+        <p class="mission-num">Misión 5</p>
+        <p class="mission-title">Corrientes superficiales</p>
+        <p class="mission-desc">Coloca giros oceánicos y observa cómo el efecto Coriolis atrapa el plástico en el centro de cada giro.</p>
+      </div>
+      <div class="mission-card">
+        <p class="mission-num">Misión 6</p>
+        <p class="mission-title">Banda de reciclaje</p>
+        <p class="mission-desc">Clasifica 15 piezas de plástico antes de que caigan: reciclaje mecánico, químico o desecho.</p>
+      </div>
+      <div class="mission-card">
+        <p class="mission-num">Misión 7</p>
+        <p class="mission-title">Exploración naval</p>
+        <p class="mission-desc">Navega con WASD por el Gran Parche y recoge 60 fragmentos de plástico. Física real de barco con inercia.</p>
+      </div>
+      <div class="mission-card">
+        <p class="mission-num">Misión 8</p>
+        <p class="mission-title">Circulación termohalina</p>
+        <p class="mission-desc">Ajusta temperatura y salinidad de zonas oceánicas. Simula el deshielo polar y observa el colapso de la AMOC.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WAS MADE -->
+<div style="background:var(--ocean-pale)">
+<div class="section">
+  <p class="section-tag">Cómo se hizo</p>
+  <h2>Código real, sin atajos</h2>
+  <p style="margin-bottom:0">El proyecto es 100% C estándar. No hay motor de videojuegos detrás: cada pantalla, cada animación y cada interacción fue escrita manualmente.</p>
+  <div class="how-grid">
+    <div class="how-card">
+      <div class="how-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 9l3 3-3 3M13 15h3"/></svg>
+      </div>
+      <h4>Raylib como motor gráfico</h4>
+      <p>Toda la interfaz se dibuja frame a frame con funciones primitivas de Raylib: rectángulos, círculos, texto, líneas. Sin sprites importados, sin editor visual.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <h4>Arquitectura modular</h4>
+      <p>Cada misión vive en su propio archivo .c. El TriviaManager es un singleton global que mezcla preguntas y gestiona el puntaje independientemente de cada minijuego.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <h4>Sistema bilingüe</h4>
+      <p>Un archivo de localización con más de 200 cadenas de texto en español e inglés. Cambiar de idioma en medio de la partida recarga las preguntas al instante.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l1.46-1.46a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92"/></svg>
+      </div>
+      <h4>Compilación cruzada</h4>
+      <p>Un solo Makefile compila para Linux, macOS y Windows (MinGW). También incluye un script para exportar a WebAssembly con Emscripten.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      </div>
+      <h4>50 preguntas de trivia</h4>
+      <p>Banco de 50 preguntas (6 por misión) en ambos idiomas, con explicaciones detalladas. Se mezclan aleatoriamente en cada sesión para evitar memorización mecánica.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-icon">
+        <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <h4>Sin dependencias extra</h4>
+      <p>Raylib incluye OpenGL, audio y manejo de entrada. El único requisito externo para compilar en Arch Linux es <code style="font-family:monospace;font-size:12px;background:#e8f4fd;padding:1px 5px;border-radius:3px">sudo pacman -S raylib gcc make</code>.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>¿Listo para navegar el Gran Parche?</h2>
+  <p>Descarga el código, compílalo y explora las 8 misiones. O juega en el navegador vía WebAssembly.</p>
+  <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+    <a class="cta-btn" href="https://wastelandwaters.vercel.app" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      Jugar en el navegador
+    </a>
+    <button class="cta-btn" onclick="sendPrompt('¿Cómo instalo y compilo Wasteland Waters en Arch Linux?')" style="background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.28)">Instrucciones de instalación ↗</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Desarrollado por <span>CoffeeShop Development</span> · <span>Colegio Naval Santafé de Bogotá</span> · v1.7.25</p>
+</footer>
